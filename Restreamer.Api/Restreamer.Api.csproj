@@ -7,7 +7,27 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Restreamer API Client</Title>
     <Version>0.$([System.DateTime]::UtcNow.ToString(yy)).$([System.DateTime]::UtcNow.Month).$([System.DateTime]::UtcNow.ToString(dd))</Version>
+    <Copyright>Copyright (C) Dmitry Tarasov, 2024</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/4egod/Restreamer.Api.git</RepositoryUrl>
+    <PackageTags>restreamer</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>Restreamer.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/4egod/Restreamer.Api</PackageProjectUrl>
+    <Description>Restreamer API Client</Description>
+    <Authors>Dmitry Tarasov</Authors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Restreamer.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Refit" Version="7.1.2" />
