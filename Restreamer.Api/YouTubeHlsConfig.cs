@@ -4,7 +4,7 @@ namespace Restreamer.Api
 {
     public record YouTubeHlsConfig : ProcessConfig
     {
-        public YouTubeHlsConfig(string reference, string youTubeStreamId)
+        public YouTubeHlsConfig(string reference, string youTubeStreamId, bool backupStream = false)
         {
             var guid = Guid.NewGuid().ToString();
 
@@ -20,7 +20,7 @@ namespace Restreamer.Api
             Outputs = [new ()
             {
                 Id = "output_0",
-                Address = $"https://a.upload.youtube.com/http_upload_hls?cid={youTubeStreamId}&copy=0&file={guid}.m3u8",
+                Address = $"https://{(backupStream?"b":"a")}.upload.youtube.com/http_upload_hls?cid={youTubeStreamId}&copy=0&file={guid}.m3u8",
                 Options =
                 [
                     "-map",
@@ -51,7 +51,7 @@ namespace Restreamer.Api
                     "-method",
                     "PUT",
                     "-hls_segment_filename",
-                    $"https://a.upload.youtube.com/http_upload_hls?cid={youTubeStreamId}&copy=0&file={guid}_%d.ts"
+                    $"https://{(backupStream?"b":"a")}.upload.youtube.com/http_upload_hls?cid={youTubeStreamId}&copy=0&file={guid}_%d.ts"
                 ]
             }];
             Options = ["-loglevel", "level+info", "-err_detect", "ignore_err"];
